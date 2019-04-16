@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_performance"
+            android:icon="@drawable/icon_performance"
+            android:title="演出" />
+        <item
+            android:id="@+id/nav_shop_market"
+            android:icon="@drawable/icon_shop_car"
+            android:title="商城" />
+        <item
+            android:id="@+id/nav_nearby_people"
+            android:icon="@drawable/icon_location"
+            android:title="附近的人" />
+        <item
+            android:id="@+id/nav_time_stop_play"
+            android:icon="@drawable/icon_timing"
+            android:title="定时停止播放" />
+        <item
+            android:id="@+id/nav_scan"
+            android:icon="@drawable/icon_coupon"
+            android:title="扫一扫" />
+
+        <item
+            android:id="@+id/nav_alarm"
+            android:icon="@drawable/icon_coupon"
+            android:title="音乐闹钟" />
+        <item
+            android:id="@+id/nav_cloud_space"
+            android:icon="@drawable/icon_coupon"
+            android:title="音乐云盘" />
+        <item
+            android:id="@+id/nav_listen_song_free"
+            android:icon="@drawable/icon_online_listen_song"
+            android:title="在线听歌免流量" />
+        <item
+            android:id="@+id/nav_recommend_game"
+            android:icon="@drawable/icon_recommend_game"
+            android:title="游戏推荐" />
+        <item
+            android:id="@+id/nav_coupon"
+            android:icon="@drawable/icon_coupon"
+            android:title="优惠券" />
+        <item
+            android:id="@+id/nav_join_musician"
+            android:icon="@drawable/icon_coupon"
+            android:title="加入网易音乐人" />
+    </group>
+</menu>
