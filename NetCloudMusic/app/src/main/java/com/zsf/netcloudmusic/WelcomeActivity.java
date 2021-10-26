@@ -2,10 +2,11 @@ package com.zsf.netcloudmusic;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import androidx.annotation.Nullable;
 
 /**
  * @author EWorld  e-mail:852333743@qq.com

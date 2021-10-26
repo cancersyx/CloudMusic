@@ -1,6 +1,5 @@
 package com.zsf.netcloudmusic;
 
-import android.support.v7.app.AppCompatActivity;
 
 /**
  * @author EWorld
