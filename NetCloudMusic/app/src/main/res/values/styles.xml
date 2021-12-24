@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimaryDark">@color/mainColor</item>
         <!--        如果statusBarColor属性和colorPrimaryDark属性同时出现，以statusBarColor为准-->

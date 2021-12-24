@@ -1,7 +1,9 @@
-package com.zsf.netcloudmusic;
+package com.zsf.netcloudmusic.activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.zsf.netcloudmusic.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -31,7 +33,7 @@ public class WelcomeActivity extends BaseActivity {
 
 
     private void toMain(){
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
 
