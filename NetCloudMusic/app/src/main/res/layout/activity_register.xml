@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/inputViewHeight"
         android:layout_marginTop="@dimen/margin_size"
-        app:input_hint="手机号"
+        app:input_hint="请输入手机号"
         app:input_icon="@drawable/phone"
         app:is_password="false" />
 
@@ -29,26 +29,27 @@
         android:id="@+id/input_password"
         android:layout_width="match_parent"
         android:layout_height="@dimen/inputViewHeight"
-        app:input_hint="密码"
+        app:input_hint="请输入密码"
         app:input_icon="@drawable/password"
         app:is_password="false" />
 
     <View style="@style/line" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:onClick="onClickRegisterBtn"
-        android:padding="@dimen/margin_size"
-        android:text="立即注册"
-        android:textColor="@color/mainColor"
-        android:textSize="@dimen/infoSize" />
+    <com.zsf.netcloudmusic.views.InputView
+        android:id="@+id/input_password_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/inputViewHeight"
+        app:input_hint="请确认密码"
+        app:input_icon="@drawable/password"
+        app:is_password="false" />
+
+    <View style="@style/line" />
+
 
     <Button
         style="@style/commitBtn"
         android:layout_marginTop="@dimen/margin_size"
-        android:onClick="onClickLoginBtn"
-        android:text="登录" />
+        android:onClick="onClickRegisterBtn"
+        android:text="注  册" />
 
 </LinearLayout>

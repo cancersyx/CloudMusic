@@ -1,11 +1,29 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimaryDark">@color/mainColor</item>
         <!--        如果statusBarColor属性和colorPrimaryDark属性同时出现，以statusBarColor为准-->
         <!--        <item name="android:statusBarColor">@android:color/black</item>-->
     </style>
 
+    <!--    分割线样式-->
+    <style name="line">
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/lineColor</item>
+        <item name="android:layout_margin">@dimen/margin_size</item>
+    </style>
+
+    <style name="commitBtn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/btnHeight</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/titleSize</item>
+        <item name="android:layout_marginLeft">@dimen/margin_size</item>
+        <item name="android:layout_marginRight">@dimen/margin_size</item>
+        <item name="android:gravity">center</item>
+        <item name="background">@drawable/selector_btn_commit</item>
+    </style>
 </resources>
