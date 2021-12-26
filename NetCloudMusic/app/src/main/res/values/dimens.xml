@@ -7,4 +7,7 @@
     <dimen name="inputViewHeight">44dp</dimen>
     <dimen name="infoSize">14sp</dimen>
     <dimen name="btnHeight">44dp</dimen>
+    <dimen name="marginTabSize">4dp</dimen>
+    <dimen name="albumMarginSize">4dp</dimen>
+    <dimen name="playNumImgSize">18dp</dimen>
 </resources>
