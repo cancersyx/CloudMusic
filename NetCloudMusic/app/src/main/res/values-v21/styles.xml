@@ -18,4 +18,23 @@
         <!--        退出Activity，退出的Activity执行的动画-->
         <item name="android:activityCloseEnterAnimation">@anim/close_enter</item>
     </style>
+
+    <!--    分割线样式-->
+    <style name="line">
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/lineColor</item>
+        <item name="android:layout_margin">@dimen/margin_size</item>
+    </style>
+
+    <style name="commitBtn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/btnHeight</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/titleSize</item>
+        <item name="android:layout_marginLeft">@dimen/margin_size</item>
+        <item name="android:layout_marginRight">@dimen/margin_size</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/selector_btn_commit</item>
+    </style>
 </resources>

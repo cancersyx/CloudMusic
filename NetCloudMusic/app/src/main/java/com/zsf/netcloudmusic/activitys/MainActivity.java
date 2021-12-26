@@ -13,9 +13,13 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_2);
+
+        initView();
     }
 
-    public void onOpenLogin(View view) {
-        LoginActivity.startActivity(this);
+    private void initView() {
+        initNavBar(false,"慕课音乐",true);
     }
+
+
 }

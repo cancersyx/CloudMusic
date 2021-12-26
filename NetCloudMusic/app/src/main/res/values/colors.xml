@@ -10,4 +10,6 @@
     <color name="statusBarColor">#e61220</color>
 
     <color name="lineColor">#c3c3c3</color>
+
+    <color name="itemColorH">#DEE1E6</color>
 </resources>
