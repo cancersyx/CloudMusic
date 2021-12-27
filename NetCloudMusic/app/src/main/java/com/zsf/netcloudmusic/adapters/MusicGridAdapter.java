@@ -1,11 +1,16 @@
 package com.zsf.netcloudmusic.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.zsf.netcloudmusic.R;
+import com.zsf.netcloudmusic.activitys.AlbumListActivity;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,7 +34,12 @@ public class MusicGridAdapter extends RecyclerView.Adapter<MusicGridAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        Glide.with(mContext).load("https://img9.doubanio.com/icon/up180220961-13.jpg")
+                .into(holder.icon);
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(mContext, AlbumListActivity.class);
+            mContext.startActivity(intent);
+        });
     }
 
     @Override
@@ -38,9 +48,11 @@ public class MusicGridAdapter extends RecyclerView.Adapter<MusicGridAdapter.View
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView icon;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            icon = itemView.findViewById(R.id.iv_icon);
         }
     }
 }
