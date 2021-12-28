@@ -12,6 +12,7 @@ import com.blankj.utilcode.util.StringUtils;
 import com.zsf.netcloudmusic.R;
 import com.zsf.netcloudmusic.activitys.LoginActivity;
 import com.zsf.netcloudmusic.helps.RealmHelper;
+import com.zsf.netcloudmusic.helps.UserHelper;
 import com.zsf.netcloudmusic.models.UserModel;
 
 import java.util.List;
@@ -58,15 +59,33 @@ public class UserUtils {
             return false;
         }
 
+        //保存用户登录标记
+        boolean isSave = SPUtils.saveUser(context, phone);
+        if (!isSave) {
+            Toast.makeText(context, "系统错误，请稍后重试", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        //保存用户标记，在全局单例类中
+        UserHelper.getInstance().setPhone(phone);
 
         return true;
     }
 
 
     /**
+     * 退出登录
+     *
      * @param context
      */
     public static void logout(Context context) {
+        //删除SharedPreferences 保存的用户标记
+        boolean isRemove = SPUtils.removeUser(context);
+        if (!isRemove) {
+            Toast.makeText(context, "系统错误，请稍后重试", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        
         Intent intent = new Intent(context, LoginActivity.class);
         //添加intent标识，清理task栈并且新生成一个task栈
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -137,5 +156,15 @@ public class UserUtils {
         }
         realmHelper.close();
         return result;
+    }
+
+    /**
+     * 验证是否存在已经登录用户
+     *
+     * @param context
+     * @return
+     */
+    public static boolean validateUserLogin(Context context) {
+        return SPUtils.isLoginUser(context);
     }
 }

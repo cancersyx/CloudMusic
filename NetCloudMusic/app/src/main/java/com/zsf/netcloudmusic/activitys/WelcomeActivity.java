@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.zsf.netcloudmusic.R;
+import com.zsf.netcloudmusic.utils.UserUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -22,13 +23,24 @@ public class WelcomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
+        boolean isLogin = UserUtils.validateUserLogin(this);
         mTimer = new Timer();
         mTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                toMain();
+                if (isLogin){
+                    toMain();
+                }else {
+                    toLogin();
+                }
             }
         }, 3 * 1000);
+    }
+
+    private void toLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 
