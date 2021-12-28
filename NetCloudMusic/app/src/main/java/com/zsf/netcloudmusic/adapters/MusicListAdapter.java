@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import com.bumptech.glide.Glide;
 import com.zsf.netcloudmusic.R;
 import com.zsf.netcloudmusic.activitys.AlbumListActivity;
+import com.zsf.netcloudmusic.activitys.PlayMusicActivity;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,8 +42,14 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         setRecyclerViewHeight();
-        Glide.with(mContext).load("https://img9.doubanio.com/icon/up180220961-13.jpg")
+        Glide.with(mContext).load("https://p.qqan.com/up/2020-8/15982538688744505.jpg")
                 .into(holder.icon);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContext.startActivity(new Intent(mContext, PlayMusicActivity.class));
+            }
+        });
     }
 
     @Override

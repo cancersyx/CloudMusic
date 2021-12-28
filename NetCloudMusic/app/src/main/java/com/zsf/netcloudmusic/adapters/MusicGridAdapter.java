@@ -34,7 +34,7 @@ public class MusicGridAdapter extends RecyclerView.Adapter<MusicGridAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Glide.with(mContext).load("https://img9.doubanio.com/icon/up180220961-13.jpg")
+        Glide.with(mContext).load("https://p.qqan.com/up/2020-8/15982538688744505.jpg")
                 .into(holder.icon);
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(mContext, AlbumListActivity.class);
