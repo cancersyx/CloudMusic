@@ -12,10 +12,10 @@ import io.realm.RealmResults;
  * Created by EWorld
  * 2021/12/28
  */
-public class RealmHelp {
+public class RealmHelper {
     private Realm mRealm;
 
-    public RealmHelp() {
+    public RealmHelper() {
         mRealm = Realm.getDefaultInstance();
     }
 
@@ -43,5 +43,23 @@ public class RealmHelp {
         RealmQuery<UserModel> query = mRealm.where(UserModel.class);
         RealmResults<UserModel> results = query.findAll();
         return results;
+    }
+
+    /**
+     * 验证用户信息
+     *
+     * @param phone
+     * @param password
+     * @return
+     */
+    public boolean validateUser(String phone, String password) {
+        boolean result = false;
+        RealmQuery<UserModel> query = mRealm.where(UserModel.class);
+        query = query.equalTo("phone", phone).equalTo("password", password);
+        UserModel userModel = query.findFirst();
+        if (userModel != null) {
+            result = true;
+        }
+        return result;
     }
 }

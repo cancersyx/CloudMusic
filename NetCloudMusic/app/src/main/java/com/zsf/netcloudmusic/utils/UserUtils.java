@@ -11,7 +11,7 @@ import com.blankj.utilcode.util.RegexUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.zsf.netcloudmusic.R;
 import com.zsf.netcloudmusic.activitys.LoginActivity;
-import com.zsf.netcloudmusic.helps.RealmHelp;
+import com.zsf.netcloudmusic.helps.RealmHelper;
 import com.zsf.netcloudmusic.models.UserModel;
 
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.List;
 public class UserUtils {
 
     /**
-     * 验证用户输入合法性
+     * 验证登录用户
      *
      * @param context
      * @param phone
@@ -39,8 +39,29 @@ public class UserUtils {
             Toast.makeText(context, "请输入密码", Toast.LENGTH_SHORT).show();
             return false;
         }
+
+        /**
+         * 1.用户当前手机号是否被注册
+         * 2.用户输入的手机号和密码是否匹配
+         * 3.
+         */
+        if (!UserUtils.userExistFromPhone(phone)) {
+            Toast.makeText(context, "当前手机号未注册", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        RealmHelper realmHelper = new RealmHelper();
+        boolean result = realmHelper.validateUser(phone, EncryptUtils.encryptMD5ToString(password));
+        realmHelper.close();//记得及时关闭
+        if (!result) {
+            Toast.makeText(context, "手机或密码不正确", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+
         return true;
     }
+
 
     /**
      * @param context
@@ -73,7 +94,7 @@ public class UserUtils {
             Toast.makeText(context, "请确认密码", Toast.LENGTH_SHORT).show();
             return false;
         }
-        //用户输入的手机号是否已经注册 TODO: 2021/12/28
+        //用户输入的手机号是否已经注册
         if (UserUtils.userExistFromPhone(phone)) {
             Toast.makeText(context, "手机号已经注册过了", Toast.LENGTH_SHORT).show();
             return false;
@@ -92,22 +113,29 @@ public class UserUtils {
      * @param userModel
      */
     public static void saveUser(UserModel userModel) {
-        RealmHelp realmHelp = new RealmHelp();
-        realmHelp.saveUser(userModel);
-        realmHelp.close();
+        RealmHelper realmHelper = new RealmHelper();
+        realmHelper.saveUser(userModel);
+        realmHelper.close();
 
     }
 
+    /**
+     * 根据手机号判断用户是否存在
+     *
+     * @param phone
+     * @return
+     */
     public static boolean userExistFromPhone(String phone) {
         boolean result = false;
-        RealmHelp realmHelp = new RealmHelp();
-        List<UserModel> allUser = realmHelp.getAllUser();
+        RealmHelper realmHelper = new RealmHelper();
+        List<UserModel> allUser = realmHelper.getAllUser();
         for (UserModel userModel : allUser) {
             if (userModel.getPhone().equals(phone)) {
                 result = true;
                 break;
             }
         }
+        realmHelper.close();
         return result;
     }
 }
