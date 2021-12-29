@@ -3,9 +3,11 @@ package com.zsf.netcloudmusic.activitys;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.zsf.netcloudmusic.R;
 import com.zsf.netcloudmusic.activitys.BaseActivity;
+import com.zsf.netcloudmusic.helps.UserHelper;
 import com.zsf.netcloudmusic.utils.UserUtils;
 
 import androidx.annotation.Nullable;
@@ -15,7 +17,7 @@ import androidx.annotation.Nullable;
  * 2021/12/23
  */
 public class MeActivity extends BaseActivity {
-
+    private TextView mUserTv;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +28,8 @@ public class MeActivity extends BaseActivity {
 
     private void iniitView() {
         initNavBar(true, "个人中心", false);
-
+        mUserTv = fd(R.id.tv_user);
+        mUserTv.setText("用户名：" + UserHelper.getInstance().getPhone());
     }
 
 

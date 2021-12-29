@@ -85,7 +85,7 @@ public class UserUtils {
             Toast.makeText(context, "系统错误，请稍后重试", Toast.LENGTH_SHORT).show();
             return;
         }
-        
+
         Intent intent = new Intent(context, LoginActivity.class);
         //添加intent标识，清理task栈并且新生成一个task栈
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -166,5 +166,39 @@ public class UserUtils {
      */
     public static boolean validateUserLogin(Context context) {
         return SPUtils.isLoginUser(context);
+    }
+
+    /**
+     * 修改密码
+     *
+     * @param context
+     * @param oldPwd
+     * @param newPwd
+     * @param confirmPwd
+     * @return
+     */
+    public static boolean changePassword(Context context, String oldPwd, String newPwd, String confirmPwd) {
+        if (TextUtils.isEmpty(oldPwd)) {
+            Toast.makeText(context, "请输入原密码", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (TextUtils.isEmpty(newPwd) || !newPwd.equals(confirmPwd)) {
+            Toast.makeText(context, "请确认密码", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        //验证原密码是否正确
+        RealmHelper realmHelper = new RealmHelper();
+        UserModel userModel = realmHelper.getUser();
+        if (!EncryptUtils.encryptMD5ToString(oldPwd).equals(userModel.getPassword())) {
+            Toast.makeText(context, "原密码不正确", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        realmHelper.changePassword(EncryptUtils.encryptMD5ToString(newPwd));
+
+        realmHelper.close();
+
+        return true;
     }
 }
