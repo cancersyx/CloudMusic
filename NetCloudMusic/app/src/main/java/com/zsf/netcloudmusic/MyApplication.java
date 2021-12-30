@@ -3,6 +3,7 @@ package com.zsf.netcloudmusic;
 import android.app.Application;
 
 import com.blankj.utilcode.util.Utils;
+import com.zsf.netcloudmusic.helps.RealmHelper;
 
 import io.realm.Realm;
 
@@ -19,5 +20,6 @@ public class MyApplication extends Application {
         Utils.init(this);
         //Realm数据库
         Realm.init(this);
+        RealmHelper.migration();
     }
 }

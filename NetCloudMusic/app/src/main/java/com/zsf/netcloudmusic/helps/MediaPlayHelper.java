@@ -9,6 +9,10 @@ import java.io.IOException;
 /**
  * Created by EWorld
  * 2021/12/28
+ * 音乐播放3种方式
+ * 1.直接在Activity创建播放音乐，音乐与Activity绑定
+ * 2.通过全局单例类与Application绑定，Application在音乐在
+ * 3.Service进行播放
  */
 public class MediaPlayHelper {
     private static MediaPlayHelper instance;
@@ -59,11 +63,15 @@ public class MediaPlayHelper {
      * @param path
      */
     public void setPath(String path) {
-        this.mPath = path;
-        //1.音乐正在播放，重置状态
-        if (mMediaPlayer.isPlaying()) {
+        /**
+         * 1.音乐处于播放状态，那么就重置音乐播放状态
+         * 2.如果音乐没有在播放状态（如暂停），则不需要重置播放状态
+         */
+        //1.音乐正在播放或切换了音乐，重置状态
+        if (mMediaPlayer.isPlaying() || !path.equals(mPath)) {
             mMediaPlayer.reset();
         }
+        this.mPath = path;
         //2.设置路径
         try {
             mMediaPlayer.setDataSource(mContext, Uri.parse(path));

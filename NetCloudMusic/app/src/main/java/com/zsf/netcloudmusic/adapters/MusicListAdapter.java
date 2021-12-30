@@ -7,11 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.zsf.netcloudmusic.R;
 import com.zsf.netcloudmusic.activitys.AlbumListActivity;
 import com.zsf.netcloudmusic.activitys.PlayMusicActivity;
+import com.zsf.netcloudmusic.models.MusicModel;
+
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,9 +30,12 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
     private RecyclerView mRv;
     private boolean isCalculationRvHeight;
 
-    public MusicListAdapter(Context context, RecyclerView recyclerView) {
+    private List<MusicModel> mDataSource;
+
+    public MusicListAdapter(Context context, RecyclerView recyclerView, List<MusicModel> dataSource) {
         this.mContext = context;
         this.mRv = recyclerView;
+        this.mDataSource = dataSource;
     }
 
     @NonNull
@@ -42,19 +49,24 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         setRecyclerViewHeight();
-        Glide.with(mContext).load("https://p.qqan.com/up/2020-8/15982538688744505.jpg")
-                .into(holder.icon);
+        MusicModel musicModel = mDataSource.get(position);
+        holder.name.setText(musicModel.getName());
+        holder.author.setText(musicModel.getAuthor());
+        //"https://p.qqan.com/up/2020-8/15982538688744505.jpg"
+        Glide.with(mContext).load(musicModel.getPoster()).into(holder.icon);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mContext.startActivity(new Intent(mContext, PlayMusicActivity.class));
+                Intent intent = new Intent(mContext, PlayMusicActivity.class);
+                intent.putExtra(PlayMusicActivity.MUSIC_ID, musicModel.getMusicId());
+                mContext.startActivity(intent);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return 8;
+        return mDataSource.size();
     }
 
     /**
@@ -78,10 +90,14 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView icon;
+        TextView name;
+        TextView author;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             icon = itemView.findViewById(R.id.iv_icon);
+            name = itemView.findViewById(R.id.tv_name);
+            author = itemView.findViewById(R.id.tv_author);
         }
     }
 }

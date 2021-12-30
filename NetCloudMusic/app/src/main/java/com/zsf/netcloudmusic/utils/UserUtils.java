@@ -53,7 +53,6 @@ public class UserUtils {
 
         RealmHelper realmHelper = new RealmHelper();
         boolean result = realmHelper.validateUser(phone, EncryptUtils.encryptMD5ToString(password));
-        realmHelper.close();//记得及时关闭
         if (!result) {
             Toast.makeText(context, "手机或密码不正确", Toast.LENGTH_SHORT).show();
             return false;
@@ -68,6 +67,10 @@ public class UserUtils {
 
         //保存用户标记，在全局单例类中
         UserHelper.getInstance().setPhone(phone);
+
+        //保存音乐源数据
+        realmHelper.setMusicSource(context);
+        realmHelper.close();//记得及时关闭
 
         return true;
     }
@@ -85,6 +88,11 @@ public class UserUtils {
             Toast.makeText(context, "系统错误，请稍后重试", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        //删除音乐数据源
+        RealmHelper realmHelper = new RealmHelper();
+        realmHelper.removeMusicSource();
+        realmHelper.close();
 
         Intent intent = new Intent(context, LoginActivity.class);
         //添加intent标识，清理task栈并且新生成一个task栈

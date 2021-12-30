@@ -5,6 +5,8 @@ import android.os.Bundle;
 import com.zsf.netcloudmusic.R;
 import com.zsf.netcloudmusic.adapters.MusicGridAdapter;
 import com.zsf.netcloudmusic.adapters.MusicListAdapter;
+import com.zsf.netcloudmusic.helps.RealmHelper;
+import com.zsf.netcloudmusic.models.MusicSourceModel;
 import com.zsf.netcloudmusic.views.GridSpaceItemDecoration;
 
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -17,13 +19,21 @@ public class MainActivity extends BaseActivity {
     private MusicGridAdapter mMusicGridAdapter;
     private MusicListAdapter mMusicListAdapter;
 
+    private RealmHelper mRealmHelper;
+    private MusicSourceModel mMusicSourceModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_2);
-
+        initData();
         initView();
+    }
+
+    private void initData() {
+        mRealmHelper = new RealmHelper();
+        mMusicSourceModel = mRealmHelper.getMusicSource();
     }
 
     private void initView() {
@@ -34,7 +44,7 @@ public class MainActivity extends BaseActivity {
         mRecyclerView.setNestedScrollingEnabled(false);//禁止RecyclerView滑动
         //mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
         mRecyclerView.addItemDecoration(new GridSpaceItemDecoration(getResources().getDimensionPixelSize(R.dimen.albumMarginSize), mRecyclerView));
-        mMusicGridAdapter = new MusicGridAdapter(this);
+        mMusicGridAdapter = new MusicGridAdapter(this, mMusicSourceModel.getAlbum());
         mRecyclerView.setAdapter(mMusicGridAdapter);
 
         /**
@@ -44,9 +54,13 @@ public class MainActivity extends BaseActivity {
         mHotMusicsRv = fd(R.id.rv_list);
         mHotMusicsRv.setNestedScrollingEnabled(false);//禁止RecyclerView滑动
         mHotMusicsRv.setLayoutManager(new LinearLayoutManager(this));
-        mMusicListAdapter = new MusicListAdapter(this, mHotMusicsRv);
+        mMusicListAdapter = new MusicListAdapter(this, mHotMusicsRv,mMusicSourceModel.getHot());
         mHotMusicsRv.setAdapter(mMusicListAdapter);
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mRealmHelper.close();
+    }
 }
