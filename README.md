@@ -7,11 +7,11 @@
 
 # APP界面截图
 
-<img width="100px" height="300px" src="https://github.com/cancersyx/CloudMusic/tree/master/Screencut/netcloudmusic_main.jpg"/>
+<img width="100px" height="300px" src="https://github.com/cancersyx/CloudMusic/Screencut/netcloudmusic_main.jpg"/>
 
-<img width="100" height="300" src="https://github.com/cancersyx/CloudMusic/tree/master/Screencut/netcloudmusic_albumlist.jpg"/><br>
+<img width="100" height="300" src="https://github.com/cancersyx/CloudMusic/Screencut/netcloudmusic_albumlist.jpg"/><br>
 
-<img width="100" height="300" src="https://github.com/cancersyx/CloudMusic/tree/master/Screencut/netcloudmusic_play.jpg"/>
+<img width="100" height="300" src="https://github.com/cancersyx/CloudMusic/Screencut/netcloudmusic_play.jpg"/>
 
-<img width="100" height="300" src="https://github.com/cancersyx/CloudMusic/tree/master/Screencut/netcloudmusic_notification.jpg"/><br>
+<img width="100" height="300" src="https://github.com/cancersyx/CloudMusic/Screencut/netcloudmusic_notification.jpg"/><br>
 
