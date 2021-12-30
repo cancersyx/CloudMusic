@@ -7,7 +7,7 @@
 
 # APP界面截图
 
-<img width="100px" height="300px" src="https://github.com/cancersyx/CloudMusic/Screencut/netcloudmusic_main.jpg"/>
+<img width="100px" height="300px" src="https://github.com/cancersyx/CloudMusic/Screencut/netcloudmusic_main.jpg" alt="首页"/>
 
 <img width="100" height="300" src="https://github.com/cancersyx/CloudMusic/Screencut/netcloudmusic_albumlist.jpg"/><br>
 
