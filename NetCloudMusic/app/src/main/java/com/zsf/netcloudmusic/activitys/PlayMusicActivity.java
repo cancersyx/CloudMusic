@@ -68,8 +68,9 @@ public class PlayMusicActivity extends BaseActivity {
         mPlayMusicView = fd(R.id.play_music_view);
         /*mPlayMusicView.setMusicIcon("https://up.enterdesk.com/edpic/bf/e9/0e/bfe90e6e7e7ffba795de257cb81f1795.jpg");
         mPlayMusicView.playMusic("https://freepd.com/music/Gotta%20Keep%20On%20Movin.mp3");*/
-        mPlayMusicView.setMusicIcon(mMusicModel.getPoster());
-        mPlayMusicView.playMusic(mMusicModel.getPath());
+        //mPlayMusicView.setMusicIcon(mMusicModel.getPoster());
+        mPlayMusicView.setMusic(mMusicModel);
+        mPlayMusicView.playMusic();
     }
 
     public void onBackClick(View view) {
@@ -82,5 +83,7 @@ public class PlayMusicActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         mRealmHelper.close();
+        //解除绑定服务
+        mPlayMusicView.destroyBind();
     }
 }

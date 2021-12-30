@@ -88,6 +88,16 @@ public class MediaPlayHelper {
                 }
             }
         });
+
+        //监听音乐播放完成
+        mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                if (mMediaPlayerHelperListener != null){
+                    mMediaPlayerHelperListener.onCompletion(mp);
+                }
+            }
+        });
     }
 
     public String getPath() {
@@ -102,5 +112,7 @@ public class MediaPlayHelper {
 
     public interface OnMediaPlayerHelperListener {
         void onPrepared(MediaPlayer mediaPlayer);
+
+        void onCompletion(MediaPlayer mediaPlayer);
     }
 }
