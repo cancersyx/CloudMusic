@@ -6,11 +6,12 @@
 
 
 # APP界面截图
-![这是图片](/Screencut/netcloudmusic_main.jpg "主界面")<br>
 
-![这是图片](/Screencut/netcloudmusic_albumlist.jpg "专辑列表")<br>
+<img width="100" height="300" src="https://github.com/cancersyx/CloudMusic/tree/master/Screencut/netcloudmusic_main.jpg"/><br>
 
-![这是图片](/Screencut/netcloudmusic_play.jpg "播放界面")<br>
+<img width="100" height="300" src="https://github.com/cancersyx/CloudMusic/tree/master/Screencut/netcloudmusic_albumlist.jpg"/><br>
 
-![这是图片](/Screencut/netcloudmusic_notification.jpg "通知")<br>
+<img width="100" height="300" src="https://github.com/cancersyx/CloudMusic/tree/master/Screencut/netcloudmusic_play.jpg"/><br>
+
+<img width="100" height="300" src="https://github.com/cancersyx/CloudMusic/tree/master/Screencut/netcloudmusic_notification.jpg"/><br>
 
