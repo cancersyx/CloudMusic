@@ -9,9 +9,9 @@
 
 <img src="Screencut/netcloudmusic_main.jpg" width="30%"/>
 
-<img src="Screencut/netcloudmusic_albumlist.jpg" width="30%"/><br>
+<img src="Screencut/netcloudmusic_albumlist.jpg" width="30%"/>
 
 <img src="Screencut/netcloudmusic_play.jpg" width="30%"/>
 
-<img src="Screencut/netcloudmusic_notification.jpg" width="30%"/><br>
+<img src="Screencut/netcloudmusic_notification.jpg" width="30%"/>
 
